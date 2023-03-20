@@ -9,10 +9,11 @@ router.get('/', async function(req, res) {
   res.status(200).json(users);
 });
 
-router.post('/:id', async function(req, res) {
-  await UserModel.find({_id: req.params.id})
+router.post('/userId', async function(req, res) {
+  const {_id} = req.body;
+  const user = await UserModel.findById({_id});
 
-  res.status(200).json('User found');
+  res.status(200).json(user);
 });
 
 router.post('/add', async function(req, res){
