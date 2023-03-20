@@ -4,8 +4,8 @@ const ProductModel = require('../models/product-model');
 
 /* GET users listing. */
 router.get('/', async function(req, res) {
-  const products = await ProductModel.find();
-  res.status(200).json(products);
+    const products = await ProductModel.find();
+    res.status(200).json(products);
 });
 
 router.get('/:id', async function(req, res) {
