@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/orders', ordersRouter);
-app.use('/api/products', ordersRouter);
+app.use('/api/products', productsRouter);
 
 async function init() {
     try {

@@ -62,10 +62,10 @@ POST http://localhost:3000/api/products/add
 Content-Type: application/json
 
 {
-  "title": "Produkt 1",
-  "description": "Beskrivning av produkt 1",
-  "price": 100, 
-  "stock": 10
+  "title": "Boba Fett Helmet",
+  "description": "Handpainted replica of bounty hunter Boba Fett's helmet",
+  "price": 2000, 
+  "stock": 15
 }
 
 ###

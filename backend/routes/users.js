@@ -16,7 +16,7 @@ router.post('/userId', async function(req, res) {
   res.status(200).json(user);
 });
 
-router.post('/add', async function(req, res){
+router.post('/add', async function(req, res) {
   let newUser = await UserModel.create({
     username: req.body.username,
     email: req.body.email,
