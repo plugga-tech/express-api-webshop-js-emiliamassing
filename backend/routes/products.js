@@ -8,6 +8,13 @@ router.get('/', async function(req, res) {
   res.status(200).json(products);
 });
 
+router.get('/:id', async function(req, res) {
+    const product = await ProductModel.findOne();
+
+    res.status(200).json(product);
+    console.log(product);
+});
+
 router.post('/add', async function(req, res) {
     let newProduct = await ProductModel.create({
         title: req.body.title,
