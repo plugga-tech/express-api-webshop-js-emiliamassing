@@ -13,7 +13,7 @@ POST http://localhost:3000/api/users/
 Content-Type: application/json
 
 {
-  "id": "// EN USER ID"
+  "_id": "64183c47619efac49ed746fb"
 }
 
 ###
@@ -23,9 +23,9 @@ POST http://localhost:3000/api/users/add
 Content-Type: application/json
 
 {
-  "name": "Test Testsson",
-  "email": "test@mail.com",
-  "password": "test"
+  "username": "Emilia Mässing",
+  "email": "emilia@mail.com",
+  "password": "slipknot"
 }
 
 ###
@@ -35,8 +35,8 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "// EN USER EMAIL",
-  "password": "// EN USER EMAIL"
+  "email": "emilia@mail.com",
+  "password": "slipknot"
 }
 
 ###
