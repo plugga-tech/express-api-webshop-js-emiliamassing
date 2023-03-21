@@ -10,10 +10,10 @@ function printStartpage() {
   const registerBtn = document.createElement('button');
   const loginBtn = document.createElement('button');
 
-  heading.innerHTML = 'Welcome to my Star Wars webshop';
-  pElement.innerHTML = 'Create an account or login to see available products';
-  registerBtn.innerHTML = 'Register';
-  loginBtn.innerHTML = 'Log In';
+  heading.innerText = 'Welcome to my Star Wars webshop';
+  pElement.innerText = 'Create an account or login to see available products';
+  registerBtn.innerText = 'Register';
+  loginBtn.innerText = 'Log In';
 
   heading.className = 'welcomeHeading';
   buttonContainer.className = 'btnContainer';

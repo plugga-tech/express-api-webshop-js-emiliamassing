@@ -9,8 +9,8 @@ export function displayForm() {
     const createUserBtn = document.createElement('button');
     
   
-    loginHeading.innerHTML= 'Create account';
-    createUserBtn.innerHTML = 'Create user';
+    loginHeading.innerText = 'Create account';
+    createUserBtn.innerText = 'Create user';
 
     emailInput.placeholder = 'E-mail';
     usernameInput.placeholder = 'Username';
