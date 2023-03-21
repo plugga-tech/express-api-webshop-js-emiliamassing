@@ -3,7 +3,7 @@ const router = express.Router();
 const OrderModel = require('../models/order-model');
 
 /* GET users listing. */
-router.get('/', async function(req, res) {
+router.get('/all', async function(req, res) {
   const orders = await OrderModel.find().populate('user');
   res.status(200).json(orders);
 });
