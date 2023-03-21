@@ -6,16 +6,21 @@ const startPage = document.querySelector('.startPage');
 function printStartpage() {
   const heading = document.createElement('h1');
   const pElement = document.createElement('p');
-  const button = document.createElement('button');
+  const buttonContainer = document.createElement('div');
+  const registerBtn = document.createElement('button');
+  const loginBtn = document.createElement('button');
 
   heading.innerHTML = 'Welcome to my Star Wars webshop';
   pElement.innerHTML = 'Create an account or login to see available products';
-  button.innerHTML = 'Register';
+  registerBtn.innerHTML = 'Register';
+  loginBtn.innerHTML = 'Log In';
 
   heading.className = 'welcomeHeading';
+  buttonContainer.className = 'btnContainer';
 
-  startPage.append(heading, pElement, button);
-  button.addEventListener('click', displayForm);
+  buttonContainer.append(registerBtn, loginBtn);
+  startPage.append(heading, pElement, buttonContainer);
+  registerBtn.addEventListener('click', displayForm);
 };
 
 

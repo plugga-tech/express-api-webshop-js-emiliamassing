@@ -7,6 +7,7 @@ export function displayForm() {
     const usernameInput = document.createElement('input');
     const passwordInput = document.createElement('input');
     const createUserBtn = document.createElement('button');
+    
   
     loginHeading.innerHTML= 'Create account';
     createUserBtn.innerHTML = 'Create user';
@@ -19,6 +20,7 @@ export function displayForm() {
     emailInput.classList.add('createEmail');
     usernameInput.classList.add('createUsername');
     passwordInput.classList.add('createPassword');
+
   
     userForm.appendChild(form);
     form.append(loginHeading, emailInput, usernameInput, passwordInput, createUserBtn);
@@ -33,7 +35,7 @@ function createUser(e) {
 
     e.preventDefault();
     let newUser = {email: emailInput.value, username: usernameInput.value, password: passwordInput.value};
-    console.log(newUser);
+    console.log('New user', newUser);
 
     fetch('http://localhost:3000/api/users/add', {
         method: "POST",
@@ -47,8 +49,15 @@ function createUser(e) {
         emailInput.value = '';
         usernameInput.value = '';
         passwordInput.value = '';
+    })
+    .catch(err => {
+        console.log('error', err);
     });
     
     console.log('User created');
 };
+
+function loginUser() {
+    
+}
 
