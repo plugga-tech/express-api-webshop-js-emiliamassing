@@ -62,10 +62,10 @@ POST http://localhost:3000/api/products/add
 Content-Type: application/json
 
 {
-  "title": "Boba Fett Helmet",
-  "description": "Handpainted replica of bounty hunter Boba Fett's helmet",
-  "price": 2000, 
-  "stock": 15
+  "title": "Mandalorian Costume",
+  "description": "Detailed version of Din Djarin's costume",
+  "price": 5000, 
+  "stock": 10
 }
 
 ###
@@ -79,21 +79,20 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-  "user": "{{getUsers.response.body.$[0].id}}",
+  "user": "64183c47619efac49ed746fb",
       "products": [
     {
-      "productId": "// ID PÅ EN PRODUKT",
-      "quantity": 1
+      "productId": "64185111f2e260e7b0e465d4",
+      "quantity": 2
     },
     {
-      "productId": "// ID PÅ EN PRODUKT",
+      "productId": "641971a2bba9db3e9471e25c",
       "quantity": 2
     }
   ]
 }
 
 ###
-
 
 // HÄMTA ALLA ORDERS
 GET http://localhost:3000/api/orders/all/
