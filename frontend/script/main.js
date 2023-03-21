@@ -1,9 +1,8 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import '../style/base.css'
 
-document.querySelector('#app').innerHTML = `
+const startPage = document.querySelector('.startPage');
+
+/*document.querySelector('#app').innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="${viteLogo}" class="logo" alt="Vite logo" />
@@ -19,6 +18,14 @@ document.querySelector('#app').innerHTML = `
       Click on the Vite logo to learn more
     </p>
   </div>
-`
+`;*/
 
-setupCounter(document.querySelector('#counter'))
+function printStartpage() {
+  const heading = document.createElement('h2');
+  heading.innerHTML = 'Welcome to my Star Wars webshop';
+  heading.className = 'welcomeHeading';
+
+  startPage.appendChild(heading);
+};
+
+printStartpage();
