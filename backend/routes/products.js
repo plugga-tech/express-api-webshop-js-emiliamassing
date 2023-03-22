@@ -5,7 +5,17 @@ const ProductModel = require('../models/product-model');
 /* GET users listing. */
 router.get('/', async function(req, res) {
     const products = await ProductModel.find();
+
     res.status(200).json(products);
+    console.log(products);
+});
+
+//Temporary router
+router.get('/inStock', async function(req, res) {
+    const productStock = await ProductModel.find({"stock": {$gt: 0}});
+
+    res.status(200).json(productStock);
+    console.log(productStock);
 });
 
 router.get('/:id', async function(req, res) {

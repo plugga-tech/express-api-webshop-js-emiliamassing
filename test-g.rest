@@ -57,15 +57,20 @@ GET http://localhost:3000/api/products/64185111f2e260e7b0e465d4
 
 ###
 
+//Egen temporär router - Hämta enbar produkter i lager
+GET http://localhost:3000/api/products/inStock
+
+###
+
 // SKAPA PRODUKT
 POST http://localhost:3000/api/products/add
 Content-Type: application/json
 
 {
-  "title": "Mandalorian Costume",
-  "description": "Detailed version of Din Djarin's costume",
+  "title": "Lightsaber",
+  "description": "Out of order",
   "price": 5000, 
-  "stock": 10
+  "stock": 0
 }
 
 ###
