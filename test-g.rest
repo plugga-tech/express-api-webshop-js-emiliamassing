@@ -57,7 +57,7 @@ GET http://localhost:3000/api/products/64185111f2e260e7b0e465d4
 
 ###
 
-//Egen temporär router - Hämta enbar produkter i lager
+//Egen temporär router - Hämta enbart produkter i lager
 GET http://localhost:3000/api/products/inStock
 
 ###

@@ -10,7 +10,7 @@ router.get('/', async function(req, res) {
     console.log(products);
 });
 
-//Temporary router
+//Temporary router to find all products in stock
 router.get('/inStock', async function(req, res) {
     const productStock = await ProductModel.find({"stock": {$gt: 0}});
 

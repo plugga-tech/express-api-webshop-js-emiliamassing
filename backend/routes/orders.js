@@ -13,8 +13,6 @@ router.post('/add', async function(req, res) {
   let newOrder = await OrderModel.create(req.body);
   let products = newOrder.products;
 
-  res.status(201).json(newOrder);
-
   products.map(async ({productId, quantity}) => {
     let products = await ProductModel.findOne({_id: {$eq: productId}});
 
@@ -28,6 +26,7 @@ router.post('/add', async function(req, res) {
 
   });
 
+  res.status(201).json(newOrder);
 });
 
 //Route för att ta emot en order:
