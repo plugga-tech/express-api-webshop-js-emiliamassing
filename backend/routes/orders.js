@@ -4,10 +4,6 @@ const OrderModel = require('../models/order-model');
 const ProductModel = require('../models/product-model');
 
 /* GET users listing. */
-/*router.get('/all', async function(req, res) {
-  const orders = await OrderModel.find().populate('user');
-  res.status(200).json(orders);
-});*/
 
 router.get('/all/:token', async function(req, res) {
   
