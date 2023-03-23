@@ -39,5 +39,17 @@ router.post('/add', async function(req, res) {
   res.status(201).json(newOrder);
 });
 
+router.post('/user', async function(req, res) {
+  let token = req.body.token;
+
+  if(token === process.env.API_TOKEN){
+    let orders = await OrderModel.find().populate('user');
+
+    res.status(200).json(orders);
+  } else{
+    res.status(401).json('Incorrect token');
+  }
+});
+
 module.exports = router;
 

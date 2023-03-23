@@ -19,7 +19,7 @@ router.post('/userId', async function(req, res) {
 
 router.post('/add', async function(req, res) {
   let newUser = await UserModel.create({
-    username: req.body.username,
+    username: req.body.username, 
     email: req.body.email,
     password: CryptoJs.SHA3(req.body.password).toString()
   });
@@ -41,7 +41,7 @@ router.post('/login', async function(req, res) {
     console.log(findUser.isLoggedIn);
     console.log('Login succecssful');
   } else {
-    res.status(401).json('Incorrect email or password');
+    res.status(401).json('Incorrect email or password');  
   }
 });
 
