@@ -38,7 +38,7 @@ router.post('/add', async function(req, res) {
     res.status(201).json(newOrder);
   } catch (error) {
     console.log('Error', error);
-    res.status(400).json({message: 'Unexpected error occured'});
+    res.status(400).json({message: 'Could not create order'});
   };
 
 });
