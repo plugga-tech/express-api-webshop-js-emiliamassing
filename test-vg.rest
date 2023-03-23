@@ -80,11 +80,11 @@ GET http://localhost:3000/api/products/category/ // ID PÅ EN SPECIFIK KATEGORI
 
 // SKAPA KATEGORI, KEY MÅSTE ANGES // UTAN KEY SVARA 401
 # @name createCategory
-POST http://localhost:3000/api/categories/add
+POST http://localhost:3000/api/categories/add/
 Content-Type: application/json
 
 {
-  "name": "Kategori 1",
+  "name": "test",
   "token": "1234key1234"
 }
 
@@ -100,12 +100,12 @@ GET http://localhost:3000/api/categories
 //
 
 // HÄMTA ALLA ORDERS, KEY MÅSTE ANGES FÖR ATT FÅ TILLGÅNG TILL ORDERS
-GET http://localhost:3000/api/orders/all/ // API TOKEN
+GET http://localhost:3000/api/orders/all/1234key1234
 
 ###
 
 // HÄMTA ALLA ORDER, FEL KEY // SKALL MISSLYCKAS
-GET http://localhost:3000/api/orders/all/ // TEST MED FEL TOKEN
+GET http://localhost:3000/api/orders/all/wrongtoken
 
 ###
 

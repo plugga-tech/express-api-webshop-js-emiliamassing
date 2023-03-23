@@ -4,9 +4,23 @@ const OrderModel = require('../models/order-model');
 const ProductModel = require('../models/product-model');
 
 /* GET users listing. */
-router.get('/all', async function(req, res) {
+/*router.get('/all', async function(req, res) {
   const orders = await OrderModel.find().populate('user');
   res.status(200).json(orders);
+});*/
+
+router.get('/all/:token', async function(req, res) {
+  
+  let token = req.params.token;
+
+  if(token === process.env.API_TOKEN){
+    let orders = await OrderModel.find().populate('user');
+    res.status(200).json(orders);
+  } else {
+    res.status(401).json({message: "Wrong API-Key"});
+  }
+  console.log(token);
+  
 });
 
 router.post('/add', async function(req, res) {
