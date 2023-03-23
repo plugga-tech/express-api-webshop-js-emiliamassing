@@ -23,8 +23,8 @@ POST http://localhost:3000/api/users/add
 Content-Type: application/json
 
 {
-  "username": "Emilia Mässing",
-  "email": "emilia@mail.com",
+  "username": "Emilia M",
+  "email": "massing@mail.com",
   "password": "slipknot"
 }
 
@@ -36,7 +36,7 @@ Content-Type: application/json
 
 {
   "email": "emilia@mail.com",
-  "password": "slipknot"
+  "password": "hej"
 }
 
 ###

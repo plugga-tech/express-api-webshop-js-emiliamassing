@@ -5,7 +5,8 @@ const CryptoJs = require('crypto-js');
 
 /* GET users listing. */
 router.get('/', async function(req, res) {
-  const users = await UserModel.find();
+  const users = await UserModel.find().select('-password');
+
   res.status(200).json(users);
 });
 

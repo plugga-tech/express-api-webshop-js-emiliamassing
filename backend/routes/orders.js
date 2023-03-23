@@ -22,19 +22,12 @@ router.post('/add', async function(req, res) {
 
     console.log('Products', products);
     console.log('Quantity', quantity);
-    console.log(updatedStock);
+    console.log(updatedProducts);
 
   });
 
   res.status(201).json(newOrder);
 });
-
-//Route för att ta emot en order:
-// X Ta emot alla produkter som skickas i order 
-// X Loopa igenom produkter, tex en map, där vi kör en findOne på produktens _id
-// X På hittade produkter så minskar vi lager antalet med det antal som det är beställt av produkten.
-// X Spara det ändrade produkten i databasen 
-// Spara order
 
 module.exports = router;
 
