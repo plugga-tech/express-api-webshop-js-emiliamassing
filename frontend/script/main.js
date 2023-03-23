@@ -1,5 +1,5 @@
 import '../style/base.css'
-import { displayForm } from './userForm';
+import { renderForm } from './userForm'
 
 const startPage = document.querySelector('.startPage');
 
@@ -15,12 +15,13 @@ function printStartpage() {
   registerBtn.innerText = 'Register';
   loginBtn.innerText = 'Log In';
 
-  heading.className = 'welcomeHeading';
-  buttonContainer.className = 'btnContainer';
+  heading.classList.add('welcomeHeading');
+  buttonContainer.classList.add('btnContainer');
+  registerBtn.classList.add('register');
 
   buttonContainer.append(registerBtn, loginBtn);
   startPage.append(heading, pElement, buttonContainer);
-  registerBtn.addEventListener('click', displayForm);
+  registerBtn.addEventListener('click', renderForm);
 };
 
 
