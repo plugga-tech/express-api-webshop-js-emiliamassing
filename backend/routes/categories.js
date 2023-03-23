@@ -3,8 +3,10 @@ const CategoryModel = require('../models/category-model');
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('categories');
+router.get('/', async function(req, res, next) {
+  let categories = await CategoryModel.find();
+
+  res.status(200).json(categories);
 });
 
 router.post('/add', async function(req, res) {
