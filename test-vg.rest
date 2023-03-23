@@ -60,11 +60,11 @@ POST http://localhost:3000/api/products/add
 Content-Type: application/json
 
 {
-  "name": "Produkt 2",
-  "description": "Beskrivning av produkt 1",
-  "price": 100,
-  "lager": 10,
-  "category": "// ID PÅ EN SPECIFIK KATEGORI",
+  "title": "Boba fett Helmet",
+  "description": "Replica of vaders helmet",
+  "price": 15000,
+  "category": "641c60cfa148bc2ac3c2f146",
+  "stock": 10,
   "token": "1234key1234"
 }
 

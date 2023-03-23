@@ -19,7 +19,7 @@ router.post('/add', async function(req, res) {
 
     console.log('New Category added', newCategory);
     res.status(201).json(newCategory);
-  } else {
+  }else {
     res.status(401).json({message: "Wrong API-Key"});
   }
 });

@@ -26,15 +26,22 @@ router.get('/:id', async function(req, res) {
 });
 
 router.post('/add', async function(req, res) {
-    let newProduct = await ProductModel.create({
-        title: req.body.title,
-        description: req.body.description,
-        price: req.body.price,
-        stock: req.body.stock
-    });
+    let token = req.body.token;
 
-    console.log('New product created', newProduct);
-    res.status(201).json(newProduct);
+    if(token === process.env.API_TOKEN){
+        let newProduct = await ProductModel.create({
+            title: req.body.title,
+            description: req.body.description,
+            price: req.body.price,
+            category: req.body.category,
+            stock: req.body.stock
+        });
+
+        console.log('New product created', newProduct);
+        res.status(201).json(newProduct);
+    } else{
+        res.status(401).json({message: "Wrong API-Key"});
+    };
 });
 
 module.exports = router;
