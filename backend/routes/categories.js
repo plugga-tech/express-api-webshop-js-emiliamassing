@@ -29,6 +29,7 @@ router.post('/add', async function(req, res) {
       res.status(401).json({message: "Wrong API-Key"});
     };
   } catch (error) {
+    console.log('Error', error);
     res.status(400).json({message: 'Unexpected error occured'});
   }
   

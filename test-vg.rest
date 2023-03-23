@@ -60,11 +60,11 @@ POST http://localhost:3000/api/products/add
 Content-Type: application/json
 
 {
-  "title": "Boba fett Helmet",
-  "description": "Replica of vaders helmet",
-  "price": 15000,
-  "category": "641c60cfa148bc2ac3c2f146",
-  "stock": 10,
+  "title": "Lightsaber - Yoda",
+  "description": "Original replicas of Yoda's lightsaber",
+  "price": 30000,
+  "category": "641c71040a16905d20276735",
+  "stock": 20,
   "token": "1234key1234"
 }
 
@@ -84,7 +84,7 @@ POST http://localhost:3000/api/categories/add/
 Content-Type: application/json
 
 {
-  "name": "Held",
+  "name": "Lightsabers",
   "token": "1234key1234"
 }
 
@@ -117,11 +117,11 @@ Content-Type: application/json
   "user": "641c669bd3ea001dbe23e689",
       "products": [
     {
-      "productId": "641c61f848ac32015290cc47",
+      "productId": "641c70798fbea3a116cffeb7",
       "quantity": 2
     },
     {
-      "productId": "641c62abc2ff8c2041ddc7f9",
+      "productId": "641c71440a16905d20276737",
       "quantity": 1
     }
   ]
