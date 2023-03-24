@@ -60,11 +60,11 @@ POST http://localhost:3000/api/products/add
 Content-Type: application/json
 
 {
-  "title": "Lightsaber - Yoda",
-  "description": "Original replicas of Yoda's lightsaber",
-  "price": 30000,
-  "category": "641c71040a16905d20276735",
-  "stock": 20,
+  "title": "Attack Of The Clones",
+  "description": "Star Wars - Episode II",
+  "price": 200,
+  "category": "641d9ab52b6a3b39549537ef",
+  "stock": 27,
   "token": "1234key1234"
 }
 
@@ -84,7 +84,7 @@ POST http://localhost:3000/api/categories/add/
 Content-Type: application/json
 
 {
-  "name": "Lightsabers",
+  "name": "Movies",
   "token": "1234key1234"
 }
 
