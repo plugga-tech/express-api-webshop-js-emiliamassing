@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <section class="startPage"></section>
-    <section class="userForm"></section>
-    <script type="module" src="./script/main.js" defer></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+</head>
+<body>
+  <section class="startPage"></section>
+  <section class="userForm">
+    <form class="registerForm"> 
+      <h2>Create Account</h2>
+      <label for="email">E-mail:
+        <input type="email" class="createEmail" name="email" required> 
+      </label>
+      <label for="username">Username:
+        <input type="text" class="createUsername" name="username" required>
+      </label>
+      <label for="password">Password:
+        <input type="password" class="createPassword" name="password" required>
+      </label>
+      <button class="createUserBtn">Create User</button>
+    </form>
+    <form class="loginForm">
+      <h2>Login</h2>
+      <label for="email">E-mail:
+        <input type="email" class="loginEmail" name="email" required>
+      </label>
+      <label for="password">Password:
+        <input type="password" class="loginPassword" name="password" required>
+      </label>
+      <button class="loginUserBtn">Log in</button>
+    </form>
+  </section>
+  <script type="module" src="./script/main.js" defer></script>
+</body>
 </html>

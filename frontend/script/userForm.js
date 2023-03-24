@@ -1,31 +1,17 @@
-const userForm = document.querySelector('.userForm');
-const form = document.createElement('form');
 
-export function renderForm() {
-    const loginHeading = document.createElement('h1');
-    const emailInput = document.createElement('input');
-    const usernameInput = document.createElement('input');
-    const passwordInput = document.createElement('input');
-    const createUserBtn = document.createElement('button');
-    
-  
-    loginHeading.innerText = 'Create account';
-    createUserBtn.innerText = 'Create user';
+const createUserBtn = document.querySelector('.createUserBtn');
+const loginUserBtn = document.querySelector('.loginUserBtn');
 
-    emailInput.placeholder = 'E-mail';
-    usernameInput.placeholder = 'Username';
-    passwordInput.placeholder = 'Password';
-    passwordInput.type = 'password';
-
-    emailInput.classList.add('createEmail');
-    usernameInput.classList.add('createUsername');
-    passwordInput.classList.add('createPassword');
-  
-    userForm.appendChild(form);
-    form.append(loginHeading, emailInput, usernameInput, passwordInput, createUserBtn);
-
-    createUserBtn.addEventListener('click', createUser);
+export function displayRegisterForm() {
+    const registerForm = document.querySelector('.registerForm');
+    if(registerForm.style.display === 'flex') {
+        registerForm.style.display = 'none';
+    }else  {    
+        registerForm.style.display = 'flex';
+    };
 };
+
+createUserBtn.addEventListener('click', createUser);
 
 function createUser(e) {
     const emailInput = document.querySelector('.createEmail');
@@ -43,7 +29,7 @@ function createUser(e) {
         body: JSON.stringify(newUser)
     })
     .then(res => res.json())
-    .then(data =>{
+    .then(data => {
         emailInput.value = '';
         usernameInput.value = '';
         passwordInput.value = '';
@@ -55,7 +41,40 @@ function createUser(e) {
     console.log('User created');
 };
 
-function loginUser() {
-    
-}
 
+export function displayLoginForm() {
+    const loginForm = document.querySelector('.loginForm')
+    if(loginForm.style.display === 'flex') {
+        loginForm.style.display = 'none';
+    }else  {    
+        loginForm.style.display = 'flex';
+    };
+};  
+
+loginUserBtn.addEventListener('click', loginUser);
+
+function loginUser(e) {
+    const emailInput = document.querySelector('.loginEmail');
+    const passwordInput = document.querySelector('.loginPassword');
+
+    e.preventDefault();
+    let userInfo = {email: emailInput.value, password: passwordInput.value};
+
+    fetch('http://localhost:3000/api/users/login', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userInfo)
+    })
+    .then(res => res.json())
+    .then(data => {
+        emailInput.value = '';
+        passwordInput.value = '';
+    })
+    .catch(err => {
+        console.log('Error', err);
+    });
+
+    console.log('Logged in');
+}

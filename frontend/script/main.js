@@ -1,5 +1,5 @@
 import '../style/base.css'
-import { renderForm } from './userForm'
+import { displayLoginForm, displayRegisterForm } from './userForm'
 
 const startPage = document.querySelector('.startPage');
 
@@ -21,9 +21,8 @@ function printStartpage() {
 
   buttonContainer.append(registerBtn, loginBtn);
   startPage.append(heading, pElement, buttonContainer);
-  registerBtn.addEventListener('click', renderForm);
+  registerBtn.addEventListener('click', displayRegisterForm);
+  loginBtn.addEventListener('click', displayLoginForm);
 };
-
-
 
 printStartpage();
