@@ -1,4 +1,3 @@
-
 const createUserBtn = document.querySelector('.createUserBtn');
 const loginUserBtn = document.querySelector('.loginUserBtn');
 
@@ -43,7 +42,8 @@ function createUser(e) {
 
 
 export function displayLoginForm() {
-    const loginForm = document.querySelector('.loginForm')
+    const loginForm = document.querySelector('.loginForm');
+
     if(loginForm.style.display === 'flex') {
         loginForm.style.display = 'none';
     }else  {    
@@ -56,7 +56,7 @@ loginUserBtn.addEventListener('click', loginUser);
 function loginUser(e) {
     const emailInput = document.querySelector('.loginEmail');
     const passwordInput = document.querySelector('.loginPassword');
-
+    const startPage = document.querySelector('.startPage');
     e.preventDefault();
     let userInfo = {email: emailInput.value, password: passwordInput.value};
 
@@ -71,10 +71,17 @@ function loginUser(e) {
     .then(data => {
         emailInput.value = '';
         passwordInput.value = '';
+        if(data.email){
+            const greeting = document.createElement('p');
+            greeting.innerText = 'You are now signed in';
+            startPage.appendChild(greeting);
+
+            displayLoginForm();
+        }
     })
     .catch(err => {
         console.log('Error', err);
     });
 
     console.log('Logged in');
-}
+};

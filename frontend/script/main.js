@@ -11,7 +11,7 @@ function printStartpage() {
   const loginBtn = document.createElement('button');
 
   heading.innerText = 'Welcome to my Star Wars webshop';
-  pElement.innerText = 'Create an account or login to see available products';
+  pElement.innerText = 'Create an account or login to place an order';
   registerBtn.innerText = 'Register';
   loginBtn.innerText = 'Log In';
 
@@ -26,3 +26,18 @@ function printStartpage() {
 };
 
 printStartpage();
+
+function printProducts() {
+    const productContainer = document.querySelector('.products');
+
+    fetch('http://localhost:3000/api/products')
+    .then(res => res.json())
+    .then(data => {
+        console.log('Products', data);
+    })
+    .catch(err => {
+        console.log('Error', err);
+    });
+};
+
+printProducts();    
