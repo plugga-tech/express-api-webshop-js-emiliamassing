@@ -48,11 +48,14 @@ section.startPage {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 3em;
 
     .btnContainer {
         button {
             margin-left: 1rem;
+        }
+
+        button.loginBtn.hidden, button.logoutBtn.hidden{
+            display: none;
         }
     }
 }
@@ -73,7 +76,22 @@ section.userForm {
 section.products {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;    
+    justify-content: center;
+    
+    .sortingContainer {
+        background-color: #a9a9a9;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        button.shoppingBasketBtn {
+            background-color: unset;
+
+            i{
+                color: #213547;
+            }
+        }
+    }
 
     .productContainer {
         margin: 1rem;

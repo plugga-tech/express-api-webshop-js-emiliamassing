@@ -18,7 +18,8 @@ function printStartpage() {
 
   heading.classList.add('welcomeHeading');
   buttonContainer.classList.add('btnContainer');
-  registerBtn.classList.add('register');
+  registerBtn.classList.add('registerBtn');
+  loginBtn.classList.add('loginBtn');
 
   buttonContainer.append(registerBtn, loginBtn);
   startPage.append(heading, pElement, buttonContainer);
@@ -32,7 +33,6 @@ function fetchProducts() {
     fetch('http://localhost:3000/api/products/')
     .then(res => res.json())
     .then(data => {
-        console.log('Products', data);
         printProducts(data);
     })
     .catch(err => {
@@ -41,6 +41,8 @@ function fetchProducts() {
 };
 
 fetchProducts();
+
+let loggedinUser = localStorage.getItem("email");
 
 function printProducts(products) {
 

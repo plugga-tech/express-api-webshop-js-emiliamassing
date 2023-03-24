@@ -1,5 +1,5 @@
 const createUserBtn = document.querySelector('.createUserBtn');
-const loginUserBtn = document.querySelector('.loginUserBtn');
+const loginUserFormBtn = document.querySelector('.loginUserBtn');
 
 export function displayRegisterForm() {
     const registerForm = document.querySelector('.registerForm');
@@ -51,7 +51,7 @@ export function displayLoginForm() {
     };
 };  
 
-loginUserBtn.addEventListener('click', loginUser);
+loginUserFormBtn.addEventListener('click', loginUser);
 
 function loginUser(e) {
     const emailInput = document.querySelector('.loginEmail');
@@ -73,10 +73,18 @@ function loginUser(e) {
         passwordInput.value = '';
         if(data.email){
             const greeting = document.createElement('p');
+            greeting.classList.add('greeting');
             greeting.innerText = 'You are now signed in';
             startPage.appendChild(greeting);
 
             displayLoginForm();
+            displayLogoutButton();
+
+            localStorage.setItem('E-mail', data.email);
+        }else {
+            const errorMsg = document.createElement('p');
+            errorMsg.innerText = 'E-mail or password is wrong';
+            startPage.appendChild(errorMsg);
         }
     })
     .catch(err => {
@@ -84,4 +92,32 @@ function loginUser(e) {
     });
 
     console.log('Logged in');
+};
+
+function displayLogoutButton() {
+    const buttonContainer = document.querySelector('.btnContainer');
+    const loginBtn = document.querySelector('.loginBtn');
+
+    const logoutBtn = document.createElement('button');
+
+    loginBtn.classList.add('hidden');
+    logoutBtn.classList.add('logoutBtn');
+
+    logoutBtn.innerHTML = 'Log out';
+
+    buttonContainer.appendChild(logoutBtn);
+    logoutBtn.addEventListener('click', logoutUser);
+};
+
+function logoutUser() {
+    const logoutBtn = document.querySelector('.logoutBtn');
+    const loginBtn = document.querySelector('.loginBtn');
+    const greeting = document.querySelector('.greeting');
+
+    console.log('log out');
+    localStorage.removeItem('E-mail');
+
+    loginBtn.classList.remove('hidden');
+    logoutBtn.classList.add('hidden');
+    greeting.remove();
 };

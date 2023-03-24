@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" type="text/css">
+  <title>Star Wars - Webshop</title>
 </head>
 <body>
   <section class="startPage"></section>
@@ -33,8 +34,15 @@
       <button class="loginUserBtn">Log in</button>
     </form>
   </section>
-  <h2 class="productHeading">Our Products</h2> 
-  <section class="products"></section>
+  <h2 class="productHeading">Our Products</h2>
+  <section class="products">
+    <div class="sortingContainer">
+      <button class="shoppingBasketBtn">
+        <i class="fa-regular fa-cart-shopping fa-solid fa-xl"></i>
+      </button>
+      <select class="selectCategory"></select>
+    </div> 
+  </section>
   <script type="module" src="./script/main.js" defer></script>
 </body>
 </html>
