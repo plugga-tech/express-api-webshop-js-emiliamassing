@@ -1,5 +1,6 @@
 const createUserBtn = document.querySelector('.createUserBtn');
 const loginUserFormBtn = document.querySelector('.loginUserBtn');
+const greeting = document.querySelector('.greeting');
 
 export function displayRegisterForm() {
     const registerForm = document.querySelector('.registerForm');
@@ -7,6 +8,7 @@ export function displayRegisterForm() {
         registerForm.style.display = 'none';
     }else  {    
         registerForm.style.display = 'flex';
+        greeting.innerHTML = '';
     };
 };
 
@@ -32,6 +34,9 @@ function createUser(e) {
         emailInput.value = '';
         usernameInput.value = '';
         passwordInput.value = '';
+
+        greeting.innerHTML = 'User Created';
+        displayRegisterForm();
     })
     .catch(err => {
         console.log('error', err);
@@ -48,6 +53,7 @@ export function displayLoginForm() {
         loginForm.style.display = 'none';
     }else  {    
         loginForm.style.display = 'flex';
+        greeting.innerHTML = '';
     };
 };  
 
@@ -56,7 +62,6 @@ loginUserFormBtn.addEventListener('click', loginUser);
 function loginUser(e) {
     const emailInput = document.querySelector('.loginEmail');
     const passwordInput = document.querySelector('.loginPassword');
-    const startPage = document.querySelector('.startPage');
     e.preventDefault();
     let userInfo = {email: emailInput.value, password: passwordInput.value};
 
@@ -72,19 +77,12 @@ function loginUser(e) {
         emailInput.value = '';
         passwordInput.value = '';
         if(data.email){
-            const greeting = document.createElement('p');
-            greeting.classList.add('greeting');
-            greeting.innerText = 'You are now signed in';
-            startPage.appendChild(greeting);
-
-            displayLoginForm();
-            displayLogoutButton();
-
+            greeting.innerHTML = 'You are now signed in';
             localStorage.setItem('E-mail', data.email);
+            displayLogoutButton();
+            displayLoginForm();
         }else {
-            const errorMsg = document.createElement('p');
-            errorMsg.innerText = 'E-mail or password is wrong';
-            startPage.appendChild(errorMsg);
+            greeting.innerHTML = 'E-mail or Password is wrong';
         }
     })
     .catch(err => {

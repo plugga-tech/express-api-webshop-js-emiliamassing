@@ -42,9 +42,9 @@ function fetchProducts() {
 
 fetchProducts();
 
-let loggedinUser = localStorage.getItem("email");
+let loggedinUser = localStorage.getItem("E-mail");
 
-function printProducts(products) {
+export function printProducts(products) {
 
     products.map(product => {
         let container = document.createElement('div');
@@ -69,12 +69,30 @@ function printProducts(products) {
         category.innerHTML = product.category.name;
         stock.innerHTML = product.stock + ' St';
 
+        const counterContainer = document.createElement('div');
+        counterContainer.classList.add('counterContainer');
+
+        let currentAmount = document.createElement('div');
+        let operatorBtns = document.createElement('div');
+        let plusBtn = document.createElement('button');
+        let minusBtn = document.createElement('button');
+
+        currentAmount.classList.add('currentAmount');
+        operatorBtns.classList.add('operatorBtns');
+        plusBtn.classList.add('plusBtn');
+        minusBtn.classList.add('minusBtn');
+
+        plusBtn.innerHTML = '+';
+        minusBtn.innerHTML = '-';
+
         let addToCartBtn = document.createElement('button');
         addToCartBtn.id = product.id;
         addToCartBtn.innerHTML = 'Add to cart';
 
-        ulElement.append(description, price, category, stock);  
-        container.append(pElement, placeholderImg, ulElement, addToCartBtn);
+        ulElement.append(description, price, category, stock);
+        counterContainer.append(currentAmount, plusBtn, minusBtn, addToCartBtn); 
+
+        container.append(pElement, placeholderImg, ulElement, counterContainer);
         productContainer.appendChild(container);
     });
-}
+};
