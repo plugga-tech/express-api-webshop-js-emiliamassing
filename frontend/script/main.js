@@ -64,11 +64,15 @@ function printProducts(products) {
 
         description.innerHTML = product.description;
         price.innerHTML = product.price + ' SEK';
-        category.innerHTML = product.category;
+        category.innerHTML = product.category.name;
         stock.innerHTML = product.stock + ' St';
 
+        let addToCartBtn = document.createElement('button');
+        addToCartBtn.id = product.id;
+        addToCartBtn.innerHTML = 'Add to cart';
+
         ulElement.append(description, price, category, stock);  
-        container.append(pElement, placeholderImg, ulElement);
+        container.append(pElement, placeholderImg, ulElement, addToCartBtn);
         productContainer.appendChild(container);
     });
 }

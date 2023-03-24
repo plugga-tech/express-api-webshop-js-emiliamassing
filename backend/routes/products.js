@@ -5,7 +5,7 @@ const ProductModel = require('../models/product-model');
 /* GET users listing. */
 router.get('/', async function(req, res) {
   try {
-    const products = await ProductModel.find();
+    const products = await ProductModel.find().populate('category');
 
     res.status(200).json(products);
     console.log(products);
@@ -18,7 +18,6 @@ router.get('/', async function(req, res) {
 
 //Temporary router to find all products in stock
 router.get('/inStock', async function(req, res) {
-
   try {
     const productStock = await ProductModel.find({"stock": {$gt: 0}});
 

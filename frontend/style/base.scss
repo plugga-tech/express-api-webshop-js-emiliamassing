@@ -40,10 +40,15 @@ body {
     }
 }
 
+.productHeading {
+    font-size: 1.8rem;
+}
+
 section.startPage {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 3em;
 
     .btnContainer {
         button {
@@ -67,9 +72,12 @@ section.userForm {
 
 section.products {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 4em;
+    flex-wrap: wrap;
+    justify-content: center;    
+
+    .productContainer {
+        margin: 1rem;
+    }
 
     p {
         font-size: larger;
@@ -83,7 +91,7 @@ section.products {
     }
 
     ul {
-        li {
+        li {    
             list-style-type: none;
             align-self: flex-start;
         }
