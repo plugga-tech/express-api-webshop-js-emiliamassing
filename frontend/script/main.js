@@ -34,6 +34,7 @@ function fetchProducts() {
     .then(res => res.json())
     .then(data => {
         printProducts(data);
+        getCategories();
     })
     .catch(err => {
         console.log('Error', err);
@@ -94,5 +95,28 @@ export function printProducts(products) {
 
         container.append(pElement, placeholderImg, ulElement, counterContainer);
         productContainer.appendChild(container);
+    });
+};
+
+function getCategories() {
+    fetch('http://localhost:3000/api/categories')
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        printCategories(data);
+    })
+    .catch(err => {
+        console.log('Error', err);
+    });
+};
+
+function printCategories(categories) {
+    const select = document.querySelector('.selectCategory');
+
+    categories.map(category => {
+        let option = document.createElement('option');
+        option.innerHTML = category.name;
+
+        select.appendChild(option);
     });
 };
