@@ -52,7 +52,7 @@ export function printProducts(products) {
         container.classList.add('productContainer');
 
         let pElement = document.createElement('p');
-        pElement.id = product.id;
+        pElement.id = product._id;
         pElement.innerHTML = product.title;
 
         const placeholderImg = document.createElement('div');
@@ -83,11 +83,12 @@ export function printProducts(products) {
         plusBtn.classList.add('plusBtn');
         minusBtn.classList.add('minusBtn');
 
+        currentAmount.innerHTML = '0'; //Ändra denna    
         plusBtn.innerHTML = '+';
         minusBtn.innerHTML = '-';
 
         let addToCartBtn = document.createElement('button');
-        addToCartBtn.id = product.id;
+        addToCartBtn.id = product._id;
         addToCartBtn.innerHTML = 'Add to cart';
 
         ulElement.append(description, price, category, stock);
@@ -116,6 +117,7 @@ function printCategories(categories) {
     categories.map(category => {
         let option = document.createElement('option');
         option.innerHTML = category.name;
+        option.id = category._id;
 
         select.appendChild(option);
     });
