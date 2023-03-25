@@ -60,18 +60,18 @@ POST http://localhost:3000/api/products/add
 Content-Type: application/json
 
 {
-  "title": "Attack Of The Clones",
-  "description": "Star Wars - Episode II",
-  "price": 200,
-  "category": "641d9ab52b6a3b39549537ef",
-  "stock": 27,
+  "title": "Anakin Skywalker's Lightsaber",
+  "description": "Handmade replica of Anakin Skywalker's lightsaber",
+  "price": 27000,
+  "category": "641c71040a16905d20276735",
+  "stock": 15,
   "token": "1234key1234"
 }
 
 ###
 
 // HÄMTA ALLA PRODUKTER FÖR EN SPECIFIK KATEGORI
-GET http://localhost:3000/api/products/category/ // ID PÅ EN SPECIFIK KATEGORI
+GET http://localhost:3000/api/products/category/641c60cfa148bc2ac3c2f146
 ###
 
 //

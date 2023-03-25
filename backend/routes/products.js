@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ProductModel = require('../models/product-model');
+const CategoryModel = require('../models/category-model');
 
 /* GET users listing. */
 router.get('/', async function(req, res) {
@@ -65,6 +66,20 @@ router.post('/add', async function(req, res) {
   } catch (error) {
     console.log('Error', error);
     res.status(401).json({message: 'Unexpected error, could not create product'});
+  };
+  
+});
+
+router.get('/category/:id', async function(req, res) {
+  try {
+    const categoryId = req.params.id;
+    const products = await ProductModel.find({'category': categoryId});
+
+    res.status(200).json(products);
+    console.log(products);
+  } catch (error) {
+    console.log('Error', error);
+    res.status(401).json({message: 'Wrong Id'});
   };
   
 });

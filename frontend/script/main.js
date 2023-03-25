@@ -96,8 +96,24 @@ export function printProducts(products) {
 
         container.append(pElement, placeholderImg, ulElement, counterContainer);
         productContainer.appendChild(container);
+
+        addToCartBtn.addEventListener('click', (e) => {
+            addProductToCart(e.target.id);
+        });
     });
 };
+
+function addProductToCart(productId) {
+    fetch('http://localhost:3000/api/products' + productId)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(err => {
+        console.log('Error', err);
+    })
+};
+
 
 function getCategories() {
     fetch('http://localhost:3000/api/categories')
