@@ -4,6 +4,8 @@ import { displayLoginForm, displayRegisterForm } from './userForm'
 const startPage = document.querySelector('.startPage');
 const productContainer = document.querySelector('.products');
 
+let cart = JSON.parse(localStorage.getItem('Cart')) || [];
+
 function printStartpage() {
   const heading = document.createElement('h1');
   const pElement = document.createElement('p');
@@ -83,7 +85,7 @@ export function printProducts(products) {
         plusBtn.classList.add('plusBtn');
         minusBtn.classList.add('minusBtn');
 
-        currentAmount.innerHTML = '0'; //Ändra denna    
+        currentAmount.innerHTML = 0; //Ändra denna    
         plusBtn.innerHTML = '+';
         minusBtn.innerHTML = '-';
 
@@ -99,15 +101,25 @@ export function printProducts(products) {
 
         addToCartBtn.addEventListener('click', (e) => {
             addProductToCart(e.target.id);
+            
         });
     });
 };
 
 function addProductToCart(productId) {
-    fetch('http://localhost:3000/api/products' + productId)
+    fetch('http://localhost:3000/api/products/' + productId)
     .then(res => res.json())
     .then(data => {
-        console.log(data);
+        let equalProduct = cart.find(cartProduct => cartProduct._id === data._id)
+        if(equalProduct) {
+            equalProduct.quantity ++;
+        }else {
+            const updatedCart = [...cart, {...data, quantity: 1}];
+            cart = updatedCart;
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        console.log(cart);
     })
     .catch(err => {
         console.log('Error', err);
@@ -119,7 +131,6 @@ function getCategories() {
     fetch('http://localhost:3000/api/categories')
     .then(res => res.json())
     .then(data => {
-        console.log(data);
         printCategories(data);
     })
     .catch(err => {
