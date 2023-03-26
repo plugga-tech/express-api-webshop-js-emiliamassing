@@ -3,6 +3,7 @@ import { displayLoginForm, displayRegisterForm } from './userForm'
 
 const startPage = document.querySelector('.startPage');
 const productContainer = document.querySelector('.products');
+const flexContainer = document.querySelector('.flexContainer');
 const shoppingCart = document.querySelector('.shoppingCart');
 const shoppingCartBtn = document.querySelector('.shoppingCartBtn');
 
@@ -100,15 +101,12 @@ export function printProducts(products) {
         productContainer.appendChild(container);
 
         addToCartBtn.addEventListener('click', (e) => {
-            addProductToCart(e.target.id);
-            console.log(e.target.id);
-            
+            addProductToCart(e.target.id);        
         });
     });
 };
 
 function addProductToCart(productId) {
-    console.log(productId);
     fetch('http://localhost:3000/api/products/' + productId)
     .then(res => res.json())
     .then(data => {
@@ -119,9 +117,8 @@ function addProductToCart(productId) {
             const updatedCart = [...cart, {...data, quantity: 1}];
             cart = updatedCart;
         }
-
+        
         localStorage.setItem('Cart', JSON.stringify(cart));
-        console.log(cart);
     })
     .catch(err => {
         console.log('Error', err);
@@ -190,18 +187,16 @@ function printCart() {
 
         let description = document.createElement('li');
         let price = document.createElement('li');
-        let category = document.createElement('li');
         let quantity = document.createElement('li');
 
         description.innerHTML = product.description;
-        price.innerHTML = product.price + ' SEK';
-        category.innerHTML = product.category.name;
+        price.innerHTML = product.price * product.quantity + ' SEK';
         quantity.innerHTML = product.quantity;
 
-        ulElement.append(description, price, category, quantity);
+        ulElement.append(description, price, quantity);
 
         orderProductContainer.append(title, placeholderImg, ulElement);
-        shoppingCart.appendChild(orderProductContainer);
+        flexContainer.appendChild(orderProductContainer);
     });
 
     console.log(productsInCart);

@@ -57,6 +57,12 @@ body {
     font-size: 1.8rem;
 }
 
+.placeholderImg {
+    width: 19em;
+    height: 15em;
+    background-color: #a9a9a9;
+}
+
 section.startPage {
     display: flex;
     flex-direction: column;
@@ -131,12 +137,6 @@ section.products {
         font-weight: 500;
     }
 
-    .placeholderImg {
-        width: 19em;
-        height: 15em;
-        background-color: #a9a9a9;
-    }
-
     ul {
         padding: 0;
         
@@ -163,6 +163,34 @@ section.products {
 
 section.products.hidden {
     display: none;
+}
+
+section.shoppingCart {
+    .cartButtonContainer {
+        display: flex;
+        justify-content: center;
+        
+        button {
+            margin: 1rem;
+        }
+    }
+
+    .flexContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .orderProductContainer {
+            margin: 1rem;
+            ul {
+                padding: 0;
+
+                li {
+                    list-style-type: none;
+                }
+            }
+        }
+    }
 }
 
 button {
