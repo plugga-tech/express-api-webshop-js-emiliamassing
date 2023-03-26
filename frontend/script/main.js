@@ -4,6 +4,7 @@ import { displayLoginForm, displayRegisterForm } from './userForm'
 const startPage = document.querySelector('.startPage');
 const productContainer = document.querySelector('.products');
 const shoppingCart = document.querySelector('.shoppingCart');
+const shoppingCartBtn = document.querySelector('.shoppingCartBtn');
 
 let cart = JSON.parse(localStorage.getItem('Cart')) || [];
 
@@ -100,12 +101,14 @@ export function printProducts(products) {
 
         addToCartBtn.addEventListener('click', (e) => {
             addProductToCart(e.target.id);
+            console.log(e.target.id);
             
         });
     });
 };
 
 function addProductToCart(productId) {
+    console.log(productId);
     fetch('http://localhost:3000/api/products/' + productId)
     .then(res => res.json())
     .then(data => {
@@ -117,14 +120,13 @@ function addProductToCart(productId) {
             cart = updatedCart;
         }
 
-        localStorage.setItem('cart', JSON.stringify(cart));
+        localStorage.setItem('Cart', JSON.stringify(cart));
         console.log(cart);
     })
     .catch(err => {
         console.log('Error', err);
     })
 };
-
 
 function getCategories() {
     fetch('http://localhost:3000/api/categories')
@@ -164,4 +166,43 @@ function showProductByCategory(categoryId) {
     .catch(err => {
         console.log('Error', err);
     });
+};
+
+shoppingCartBtn.addEventListener('click', printCart);
+
+function printCart() {
+    productContainer.classList.toggle('toggleHidden');
+    shoppingCart.classList.toggle('toggleHidden');
+
+    const productsInCart = JSON.parse(window.localStorage.getItem('Cart'));
+
+    productsInCart.map(product => {
+        let orderProductContainer = document.createElement('div');
+        orderProductContainer.classList.add('orderProductContainer');
+
+        let title = document.createElement('h3');
+        title.innerHTML = product.title;
+
+        const placeholderImg = document.createElement('div');
+        placeholderImg.classList.add('placeholderImg');
+
+        const ulElement = document.createElement('ul');
+
+        let description = document.createElement('li');
+        let price = document.createElement('li');
+        let category = document.createElement('li');
+        let quantity = document.createElement('li');
+
+        description.innerHTML = product.description;
+        price.innerHTML = product.price + ' SEK';
+        category.innerHTML = product.category.name;
+        quantity.innerHTML = product.quantity;
+
+        ulElement.append(description, price, category, quantity);
+
+        orderProductContainer.append(title, placeholderImg, ulElement);
+        shoppingCart.appendChild(orderProductContainer);
+    });
+
+    console.log(productsInCart);
 };
