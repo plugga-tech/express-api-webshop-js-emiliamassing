@@ -3,6 +3,7 @@ import { displayLoginForm, displayRegisterForm } from './userForm'
 
 const startPage = document.querySelector('.startPage');
 const productContainer = document.querySelector('.products');
+const shoppingCart = document.querySelector('.shoppingCart');
 
 let cart = JSON.parse(localStorage.getItem('Cart')) || [];
 
@@ -44,8 +45,6 @@ function fetchProducts() {
 };
 
 fetchProducts();
-
-let loggedinUser = localStorage.getItem("E-mail");
 
 export function printProducts(products) {
 
@@ -117,7 +116,7 @@ function addProductToCart(productId) {
             const updatedCart = [...cart, {...data, quantity: 1}];
             cart = updatedCart;
         }
-        
+
         localStorage.setItem('cart', JSON.stringify(cart));
         console.log(cart);
     })
@@ -139,13 +138,30 @@ function getCategories() {
 };
 
 function printCategories(categories) {
-    const select = document.querySelector('.selectCategory');
+    const filterContainer = document.querySelector('.filter');
 
     categories.map(category => {
-        let option = document.createElement('option');
-        option.innerHTML = category.name;
-        option.id = category._id;
+        let button = document.createElement('button');
+        button.innerHTML = category.name;
+        button.id = category._id;
+        button.classList.add('filterBtn');
 
-        select.appendChild(option);
+        filterContainer.appendChild(button);
+
+        button.addEventListener('click', (e) => {
+            showProductByCategory(e.target.id);
+        });
+    });
+};
+
+function showProductByCategory(categoryId) {
+    fetch('http://localhost:3000/api/products/category/' + categoryId)
+    .then(res => res.json())
+    .then(data => {
+        productContainer.innerHTML = '';
+        printProducts(data);
+    })
+    .catch(err => {
+        console.log('Error', err);
     });
 };

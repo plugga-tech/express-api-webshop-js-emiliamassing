@@ -77,39 +77,38 @@ section.userForm {
     }
 }
 
+.sortingContainer {
+    background-color: #a9a9a9;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+
+    button.shoppingBasketBtn {
+        background-color: unset;
+
+        i{
+            color: #213547;
+        }
+
+        &:hover {
+            border: none;
+        }
+    }
+
+    .filterBtn {
+        border: 2px solid #213547;
+        border-radius: unset;
+        margin-left: 1rem;
+        color: #213547;
+        font-family: inherit;
+    }
+}
+
 section.products {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     
-    .sortingContainer {
-        background-color: #a9a9a9;
-        padding: 1em;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-
-        button.shoppingBasketBtn {
-            background-color: unset;
-
-            i{
-                color: #213547;
-            }
-
-            &:hover {
-                border: none;
-            }
-        }
-
-        select {
-            border: 2px solid #213547;
-            color: #213547;
-            font-family: inherit;
-            font-weight: 600;
-            cursor: pointer;
-        }
-    }
-
     .productContainer {
         margin: 1rem;
     }
