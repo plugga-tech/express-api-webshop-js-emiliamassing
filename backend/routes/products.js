@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ProductModel = require('../models/product-model');
 const CategoryModel = require('../models/category-model');
+const { ObjectId } = require("mongodb");
 
 /* GET users listing. */
 router.get('/', async function(req, res) {
@@ -32,8 +33,9 @@ router.get('/inStock', async function(req, res) {
 });
 
 router.get('/:id', async function(req, res) {
-  try {
-    const product = await ProductModel.findOne();
+  try { 
+    let id = req.params.id;
+    const product = await ProductModel.findOne({"_id": new ObjectId(id)});
 
     res.status(200).json(product);
     console.log(product);

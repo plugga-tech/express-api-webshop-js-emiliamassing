@@ -30,9 +30,9 @@ router.post('/add', async function(req, res) {
     products.map(async ({productId, quantity}) => {
       let products = await ProductModel.findOne({_id: {$eq: productId}});
   
-      let updatedStock = products.stock - quantity;
+      let updatedStock = products.stock -= quantity;
   
-      let updatedProducts = await ProductModel.updateOne({_id: productId}, {stock: updatedStock});
+      await ProductModel.updateOne({_id: productId}, {stock: updatedStock});
     });
   
     res.status(201).json(newOrder);
